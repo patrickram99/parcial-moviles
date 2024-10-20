@@ -8,7 +8,6 @@ import com.example.myapplication.models.QuizQuestion
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import java.util.*
 
 class QuizViewModel(application: Application) : AndroidViewModel(application) {
 

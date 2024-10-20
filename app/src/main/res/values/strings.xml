@@ -5,4 +5,20 @@
     <string name="go_back">Go back</string>
     <string name="regresar">Regresar</string>
     <string name="msg_enviar">Enviar</string>
+    <string name="correcto">¡Correcto!</string>
+    <string name="incorrecto">Incorrecto</string>
+    <string name="score">Score: %1$s / %2$s</string>
+    <string name="div">/</string>
+    <string name="jugador">Jugador: %1$s</string>
+    <string name="puntuaci_n">Puntuación: %1$s</string>
+    <string name="quiz_app">Quiz App</string>
+    <string name="question_title">Pregunta %1$d de 5</string>
+    <string name="tabla_de_clasificaci_n">Tabla de clasificación</string>
+    <string name="intentar_de_nuevo">Intentar de nuevo</string>
+    <string name="salir">Salir</string>
+    <string name="revisar">Revisar</string>
+    <string name="ingrese_su_nombre">Ingrese su nombre</string>
+    <string name="comenzar">Comenzar</string>
+    <string name="titulo">¡Bienvenido al Juego de Preguntas!</string>
+    <string name="descripcion">Prepárate para poner a prueba tus conocimientos con 5 preguntas desafiantes sobre los mundiales de League of Legends, estas cambian cada intento. ¡Buena suerte!</string>
 </resources>
