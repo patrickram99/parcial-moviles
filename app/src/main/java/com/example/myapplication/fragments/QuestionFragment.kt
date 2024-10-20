@@ -25,6 +25,7 @@ class QuestionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Pregunta ${viewModel.currentQuestionIndex.value?.plus(1)} de 5"
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getCurrentQuestion()?.let { question ->
