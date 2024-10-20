@@ -51,7 +51,6 @@ class AnswerFragment : Fragment() {
                     putInt("totalQuestions", viewModel.questions.value?.size ?: 0)
                 }
                 findNavController().navigate(R.id.action_answerFragment_to_endFragment, bundle)
-                viewModel.resetQuiz()
             }
         }
     }

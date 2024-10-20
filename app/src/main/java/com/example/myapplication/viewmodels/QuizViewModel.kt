@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.models.QuizQuestion
 import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
 import java.util.*
 
 class QuizViewModel(application: Application) : AndroidViewModel(application) {
@@ -19,8 +21,14 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
     private val _score = MutableLiveData<Int>()
     val score: LiveData<Int> = _score
 
+    private val _leaderboard = MutableLiveData<List<LeaderboardEntry>>()
+    val leaderboard: LiveData<List<LeaderboardEntry>> = _leaderboard
+
+    var playerName: String = ""
+
     init {
         loadQuestions()
+        loadLeaderboard()
         _currentQuestionIndex.value = 0
         _score.value = 0
     }
@@ -59,6 +67,37 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
         _questions.value = randomQuestions
     }
 
+    private fun loadLeaderboard() {
+        val jsonString = getApplication<Application>().assets.open("leaderboard.json").bufferedReader().use { it.readText() }
+        val jsonArray = JSONArray(jsonString)
+        val leaderboardList = mutableListOf<LeaderboardEntry>()
+
+        for (i in 0 until jsonArray.length()) {
+            val entryObj = jsonArray.getJSONObject(i)
+            leaderboardList.add(
+                LeaderboardEntry(
+                    entryObj.getString("name"),
+                    entryObj.getInt("score")
+                )
+            )
+        }
+
+        _leaderboard.value = leaderboardList
+    }
+
+    private fun saveLeaderboard() {
+        val jsonArray = JSONArray()
+        _leaderboard.value?.forEach { entry ->
+            val entryObj = JSONObject()
+            entryObj.put("name", entry.name)
+            entryObj.put("score", entry.score)
+            jsonArray.put(entryObj)
+        }
+
+        val file = File(getApplication<Application>().filesDir, "leaderboard.json")
+        file.writeText(jsonArray.toString())
+    }
+
     fun getCurrentQuestion(): QuizQuestion? {
         return questions.value?.getOrNull(currentQuestionIndex.value ?: 0)
     }
@@ -71,12 +110,27 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
         val currentQuestion = getCurrentQuestion()
         if (currentQuestion?.correctAnswer == selectedAnswer) {
             _score.value = (_score.value ?: 0) + 1
+            println(_score.value)
         }
     }
 
     fun resetQuiz() {
+        // Add current score to leaderboard
+        val currentScore = _score.value ?: 0
+        val newEntry = LeaderboardEntry(playerName, currentScore)
+        val updatedLeaderboard = (_leaderboard.value ?: emptyList()).toMutableList()
+        updatedLeaderboard.add(newEntry)
+        updatedLeaderboard.sortByDescending { it.score }
+        _leaderboard.value = updatedLeaderboard
+
+        // Save updated leaderboard
+        saveLeaderboard()
+
+        // Reset quiz state
         _currentQuestionIndex.value = 0
         _score.value = 0
-        loadQuestions() // Recargar las preguntas al azar
+        loadQuestions()
     }
+
+    data class LeaderboardEntry(val name: String, val score: Int)
 }

@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentWelcomeBinding
+import com.example.myapplication.viewmodels.QuizViewModel
 
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: QuizViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentWelcomeBinding.inflate(inflater, container, false)
@@ -24,7 +28,10 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).supportActionBar?.title = "Quiz Worlds 2024"
 
+        binding.nameEditText.setText(viewModel.playerName)
+
         binding.startButton.setOnClickListener {
+            viewModel.playerName = binding.nameEditText.text.toString()
             findNavController().navigate(R.id.action_welcomeFragment_to_questionFragment)
         }
     }

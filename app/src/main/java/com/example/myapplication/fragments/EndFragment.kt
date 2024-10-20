@@ -1,60 +1,95 @@
 package com.example.myapplication.fragments
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentEndBinding
+import com.example.myapplication.databinding.ItemLeaderboardBinding
+import com.example.myapplication.viewmodels.QuizViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EndFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EndFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private var _binding: FragmentEndBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: QuizViewModel by activityViewModels()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentEndBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.nameText.text = "Jugador: ${viewModel.playerName}"
+        binding.scoreText.text = "Puntuación: ${viewModel.score.value}"
+
+        binding.leaderboardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = LeaderboardAdapter(viewModel.playerName)
+        binding.leaderboardRecyclerView.adapter = adapter
+
+        viewModel.leaderboard.observe(viewLifecycleOwner) { leaderboard ->
+            adapter.submitList(leaderboard)
+        }
+
+        binding.tryAgainButton.setOnClickListener {
+            findNavController().navigate(R.id.action_endFragment_to_welcomeFragment)
+            viewModel.resetQuiz()
+        }
+
+        binding.exitButton.setOnClickListener {
+            requireActivity().finish()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_end, container, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EndFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EndFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private class LeaderboardAdapter(private val currentPlayerName: String) :
+        RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
+
+        private var items: List<QuizViewModel.LeaderboardEntry> = emptyList()
+
+        fun submitList(newItems: List<QuizViewModel.LeaderboardEntry>) {
+            items = newItems
+            notifyDataSetChanged()
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val binding = ItemLeaderboardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return ViewHolder(binding)
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val entry = items[position]
+            holder.bind(entry, position + 1, entry.name == currentPlayerName)
+        }
+
+        override fun getItemCount(): Int = items.size
+
+        class ViewHolder(private val binding: ItemLeaderboardBinding) : RecyclerView.ViewHolder(binding.root) {
+            fun bind(entry: QuizViewModel.LeaderboardEntry, position: Int, isCurrentPlayer: Boolean) {
+                binding.positionText.text = position.toString()
+                binding.nameText.text = entry.name
+                binding.scoreText.text = entry.score.toString()
+
+                if (isCurrentPlayer) {
+                    itemView.setBackgroundColor(Color.YELLOW)
+                } else {
+                    itemView.setBackgroundColor(Color.TRANSPARENT)
                 }
             }
+        }
     }
 }
