@@ -55,15 +55,8 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
             )
         }
 
-        // Seleccionar 5 preguntas al azar
-        val randomQuestions = mutableListOf<QuizQuestion>()
-        val random = Random()
-        for (i in 0 until 5) {
-            val index = random.nextInt(questionList.size)
-            randomQuestions.add(questionList[index])
-            questionList.removeAt(index)
-        }
-
+        // Select 5 random questions
+        val randomQuestions = questionList.shuffled().take(5)
         _questions.value = randomQuestions
     }
 
@@ -110,12 +103,10 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
         val currentQuestion = getCurrentQuestion()
         if (currentQuestion?.correctAnswer == selectedAnswer) {
             _score.value = (_score.value ?: 0) + 1
-            println(_score.value)
         }
     }
 
-    fun resetQuiz() {
-        // Add current score to leaderboard
+    fun addCurrentPlayerToLeaderboard() {
         val currentScore = _score.value ?: 0
         val newEntry = LeaderboardEntry(playerName, currentScore)
         val updatedLeaderboard = (_leaderboard.value ?: emptyList()).toMutableList()
@@ -125,8 +116,9 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
         // Save updated leaderboard
         saveLeaderboard()
+    }
 
-        // Reset quiz state
+    fun resetQuiz() {
         _currentQuestionIndex.value = 0
         _score.value = 0
         loadQuestions()

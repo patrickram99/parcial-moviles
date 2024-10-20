@@ -1,10 +1,10 @@
 package com.example.myapplication.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -32,6 +32,9 @@ class EndFragment : Fragment() {
 
         binding.nameText.text = "Jugador: ${viewModel.playerName}"
         binding.scoreText.text = "Puntuación: ${viewModel.score.value}"
+
+        // Add current player to leaderboard
+        viewModel.addCurrentPlayerToLeaderboard()
 
         binding.leaderboardRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = LeaderboardAdapter(viewModel.playerName)
@@ -85,9 +88,11 @@ class EndFragment : Fragment() {
                 binding.scoreText.text = entry.score.toString()
 
                 if (isCurrentPlayer) {
-                    itemView.setBackgroundColor(Color.YELLOW)
+                    itemView.background = ContextCompat.getDrawable(itemView.context, R.drawable.leaderboard_item_background)
+                    itemView.elevation = 4f // Add a slight elevation for a "lifted" effect
                 } else {
-                    itemView.setBackgroundColor(Color.TRANSPARENT)
+                    itemView.background = null
+                    itemView.elevation = 0f
                 }
             }
         }
