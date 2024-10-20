@@ -12,18 +12,37 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentQuestionBinding
 import com.example.myapplication.viewmodels.QuizViewModel
 
+/**
+ * QuestionFragment displays a quiz question and its possible answers.
+ */
 class QuestionFragment : Fragment() {
 
+    // Binding object instance corresponding to the fragment_question.xml layout
     private var _binding: FragmentQuestionBinding? = null
+
+    // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
 
+    // Shared ViewModel instance to manage quiz data
     private val viewModel: QuizViewModel by activityViewModels()
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQuestionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /**
+     * Called immediately after onCreateView has returned, but before any saved state has been restored in to the view.
+     * @param view The View returned by onCreateView.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.question_title, viewModel.currentQuestionIndex.value?.plus(1))
         super.onViewCreated(view, savedInstanceState)
@@ -55,6 +74,9 @@ class QuestionFragment : Fragment() {
         }
     }
 
+    /**
+     * Called when the view previously created by onCreateView has been detached from the fragment.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
