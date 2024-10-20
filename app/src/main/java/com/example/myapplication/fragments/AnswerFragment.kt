@@ -50,7 +50,7 @@ class AnswerFragment : Fragment() {
                     putInt("finalScore", viewModel.score.value ?: 0)
                     putInt("totalQuestions", viewModel.questions.value?.size ?: 0)
                 }
-                findNavController().navigate(R.id.action_answerFragment_to_welcomeFragment, bundle)
+                findNavController().navigate(R.id.action_answerFragment_to_endFragment, bundle)
                 viewModel.resetQuiz()
             }
         }

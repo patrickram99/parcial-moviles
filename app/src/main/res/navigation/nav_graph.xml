@@ -34,10 +34,13 @@
             android:id="@+id/action_answerFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
         <action
-            android:id="@+id/action_answerFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_answerFragment_to_endFragment"
+            app:destination="@id/endFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.myapplication.fragments.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" />
 
 </navigation>

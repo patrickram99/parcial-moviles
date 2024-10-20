@@ -1,57 +1,167 @@
 [
-  {
-    "question": "¿Cuál es la capital de Francia?",
-    "options": [
-      "Londres",
-      "Berlín",
-      "París",
-      "Madrid"
-    ],
-    "correctAnswer": 2,
-    "explanation": "La capital de Francia es París, conocida como la Ciudad de la Luz."
-  },
-  {
-    "question": "¿En qué año comenzó la Segunda Guerra Mundial?",
-    "options": [
-      "1939",
-      "1941",
-      "1945",
-      "1914"
-    ],
-    "correctAnswer": 0,
-    "explanation": "La Segunda Guerra Mundial comenzó en 1939 con la invasión de Polonia por parte de Alemania."
-  },
-  {
-    "question": "¿Cuál es el planeta más grande del sistema solar?",
-    "options": [
-      "Marte",
-      "Venus",
-      "Saturno",
-      "Júpiter"
-    ],
-    "correctAnswer": 3,
-    "explanation": "Júpiter es el planeta más grande del sistema solar, con un diámetro de aproximadamente 139,820 km."
-  },
-  {
-    "question": "¿Quién pintó la Mona Lisa?",
-    "options": [
-      "Vincent van Gogh",
-      "Pablo Picasso",
-      "Leonardo da Vinci",
-      "Miguel Ángel"
-    ],
-    "correctAnswer": 2,
-    "explanation": "La Mona Lisa fue pintada por Leonardo da Vinci, un polímata del Renacimiento italiano."
-  },
-  {
-    "question": "¿Cuál es el elemento químico más abundante en el universo?",
-    "options": [
-      "Oxígeno",
-      "Carbono",
-      "Helio",
-      "Hidrógeno"
-    ],
-    "correctAnswer": 3,
-    "explanation": "El hidrógeno es el elemento químico más abundante en el universo, constituyendo aproximadamente el 75% de su masa."
-  }
+{
+"question": "¿Cuál es el equipo que ha ganado más campeonatos mundiales de League of Legends?",
+"options": [
+"SK Telecom T1",
+"Samsung Galaxy",
+"Invictus Gaming",
+"G2 Esports"
+],
+"correctAnswer": 0,
+"explanation": "SK Telecom T1 es el equipo que ha ganado más campeonatos mundiales de League of Legends, con un total de 4 títulos."
+},
+{
+"question": "¿En qué año se celebró el primer campeonato mundial de League of Legends?",
+"options": [
+"2010",
+"2011",
+"2012",
+"2013"
+],
+"correctAnswer": 1,
+"explanation": "El primer campeonato mundial de League of Legends se celebró en 2011 en Jönköping, Suecia."
+},
+{
+"question": "¿Cuál es el jugador que ha ganado más campeonatos mundiales de League of Legends como jugador?",
+"options": [
+"Lee 'Faker' Sang-hyeok",
+"Kim 'Reignover' Yeu-jin",
+"Jang 'MaRin' Gyeong-hwan",
+"Bae 'Bang' Jun-sik"
+],
+"correctAnswer": 0,
+"explanation": "Lee 'Faker' Sang-hyeok es el jugador que ha ganado más campeonatos mundiales de League of Legends como jugador, con un total de 4 títulos."
+},
+{
+"question": "¿Cuál es el equipo que ganó el campeonato mundial de League of Legends en 2020?",
+"options": [
+"DAMWON Gaming",
+"Top Esports",
+"G2 Esports",
+"Invictus Gaming"
+],
+"correctAnswer": 0,
+"explanation": "DAMWON Gaming ganó el campeonato mundial de League of Legends en 2020, derrotando a Top Esports en la final."
+},
+{
+"question": "¿Cuál es el país que ha albergado más campeonatos mundiales de League of Legends?",
+"options": [
+"Corea del Sur",
+"China",
+"Estados Unidos",
+"Alemania"
+],
+"correctAnswer": 0,
+"explanation": "Corea del Sur es el país que ha albergado más campeonatos mundiales de League of Legends, con un total de 4 eventos."
+},
+{
+"question": "¿Cuál es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LCK?",
+"options": [
+"SK Telecom T1",
+"Samsung Galaxy",
+"KT Rolster",
+"Gen.G"
+],
+"correctAnswer": 0,
+"explanation": "SK Telecom T1 es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LCK, con un total de 4 títulos."
+},
+{
+"question": "¿Cuál es el jugador que ha sido nombrado MVP del campeonato mundial de League of Legends más veces?",
+"options": [
+"Lee 'Faker' Sang-hyeok",
+"Kim 'Reignover' Yeu-jin",
+"Jang 'MaRin' Gyeong-hwan",
+"Bae 'Bang' Jun-sik"
+],
+"correctAnswer": 0,
+"explanation": "Lee 'Faker' Sang-hyeok es el jugador que ha sido nombrado MVP del campeonato mundial de League of Legends más veces, con un total de 2 premios."
+},
+{
+"question": "¿Cuál es el equipo que ganó el campeonato mundial de League of Legends en 2019?",
+"options": [
+"FunPlus Phoenix",
+"G2 Esports",
+"Invictus Gaming",
+"SK Telecom T1"
+],
+"correctAnswer": 0,
+"explanation": "FunPlus Phoenix ganó el campeonato mundial de League of Legends en 2019, derrotando a G2 Esports en la final."
+},
+{
+"question": "¿Cuál es el país que ha ganado más campeonatos mundiales de League of Legends?",
+"options": [
+"Corea del Sur",
+"China",
+"Estados Unidos",
+"Europa"
+],
+"correctAnswer": 0,
+"explanation": "Corea del Sur es el país que ha ganado más campeonatos mundiales de League of Legends, con un total de 6 títulos."
+},
+{
+"question": "¿Cuál es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LPL?",
+"options": [
+"Invictus Gaming",
+"FunPlus Phoenix",
+"Royal Never Give Up",
+"JD Gaming"
+],
+"correctAnswer": 0,
+"explanation": "Invictus Gaming es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LPL, con un total de 2 títulos."
+},
+{
+"question": "¿Cuál es el jugador que ha ganado más campeonatos mundiales de League of Legends como entrenador?",
+"options": [
+"Kim 'kkOma' Jeong-gyun",
+"Lee 'Zefa' Jae-min",
+"Kim 'Reignover' Yeu-jin",
+"Bae 'Bang' Jun-sik"
+],
+"correctAnswer": 0,
+"explanation": "Kim 'kkOma' Jeong-gyun es el jugador que ha ganado más campeonatos mundiales de League of Legends como entrenador, con un total de 3 títulos."
+},
+{
+"question": "¿Cuál es el equipo que ganó el campeonato mundial de League of Legends en 2018?",
+"options": [
+"Invictus Gaming",
+"G2 Esports",
+"SK Telecom T1",
+"KT Rolster"
+],
+"correctAnswer": 0,
+"explanation": "Invictus Gaming ganó el campeonato mundial de League of Legends en 2018, derrotando a G2 Esports en la final."
+},
+{
+"question": "¿Cuál es el país que ha albergado más finales de campeonatos mundiales de League of Legends?",
+"options": [
+"Corea del Sur",
+"China",
+"Estados Unidos",
+"Alemania"
+],
+"correctAnswer": 0,
+"explanation": "Corea del Sur es el país que ha albergado más finales de campeonatos mundiales de League of Legends, con un total de 5 eventos."
+},
+{
+"question": "¿Cuál es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LCS?",
+"options": [
+"Team SoloMid",
+"Team Liquid",
+"Cloud9",
+"100 Thieves"
+],
+"correctAnswer": 0,
+"explanation": "Team SoloMid es el equipo que ha ganado más campeonatos mundiales de League of Legends en la región de LCS, con un total de 1 título."
+},
+{
+"question": "¿Cuál es el jugador que ha sido nombrado MVP de la final del campeonato mundial de League of Legends más veces?",
+"options": [
+"Lee 'Faker' Sang-hyeok",
+"Kim 'Reignover' Yeu-jin",
+"Jang 'MaRin' Gyeong-hwan",
+"Bae 'Bang' Jun-sik"
+],
+"correctAnswer": 0,
+"explanation": "Lee 'Faker' Sang-hyeok es el jugador que ha sido nombrado MVP de la final del campeonato mundial de League of Legends más veces, con un total de 2 premios."
+}
 ]

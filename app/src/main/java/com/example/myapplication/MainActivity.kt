@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the toolbar as the action bar
         setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar?.title = "Quiz App"
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController

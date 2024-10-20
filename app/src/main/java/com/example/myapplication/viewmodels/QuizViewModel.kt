@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.models.QuizQuestion
 import org.json.JSONArray
+import java.util.*
 
 class QuizViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -46,7 +47,16 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
             )
         }
 
-        _questions.value = questionList
+        // Seleccionar 5 preguntas al azar
+        val randomQuestions = mutableListOf<QuizQuestion>()
+        val random = Random()
+        for (i in 0 until 5) {
+            val index = random.nextInt(questionList.size)
+            randomQuestions.add(questionList[index])
+            questionList.removeAt(index)
+        }
+
+        _questions.value = randomQuestions
     }
 
     fun getCurrentQuestion(): QuizQuestion? {
@@ -67,5 +77,6 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
     fun resetQuiz() {
         _currentQuestionIndex.value = 0
         _score.value = 0
+        loadQuestions() // Recargar las preguntas al azar
     }
 }

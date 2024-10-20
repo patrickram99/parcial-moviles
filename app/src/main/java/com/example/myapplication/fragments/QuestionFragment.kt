@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -33,13 +34,19 @@ class QuestionFragment : Fragment() {
             binding.option3.text = question.options[2]
             binding.option4.text = question.options[3]
 
-            val options = listOf(binding.option1, binding.option2, binding.option3, binding.option4)
+            binding.checkButton.setOnClickListener {
+                val selectedAnswer = when {
+                    binding.option1.isChecked -> 0
+                    binding.option2.isChecked -> 1
+                    binding.option3.isChecked -> 2
+                    binding.option4.isChecked -> 3
+                    else -> -1
+                }
 
-            options.forEachIndexed { index, button ->
-                button.setOnClickListener {
-                    viewModel.answerQuestion(index)
+                if (selectedAnswer != -1) {
+                    viewModel.answerQuestion(selectedAnswer)
                     val bundle = Bundle().apply {
-                        putInt("selectedAnswer", index)
+                        putInt("selectedAnswer", selectedAnswer)
                     }
                     findNavController().navigate(R.id.action_questionFragment_to_answerFragment, bundle)
                 }
