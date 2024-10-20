@@ -1,0 +1,32 @@
+[
+  {
+    "question": "¿Cuál es la capital de Francia?",
+    "options": ["Londres", "Berlín", "París", "Madrid"],
+    "correctAnswer": 2,
+    "explanation": "La capital de Francia es París, conocida como la Ciudad de la Luz."
+  },
+  {
+    "question": "¿En qué año comenzó la Segunda Guerra Mundial?",
+    "options": ["1939", "1941", "1945", "1914"],
+    "correctAnswer": 0,
+    "explanation": "La Segunda Guerra Mundial comenzó en 1939 con la invasión de Polonia por parte de Alemania."
+  },
+  {
+    "question": "¿Cuál es el planeta más grande del sistema solar?",
+    "options": ["Marte", "Venus", "Saturno", "Júpiter"],
+    "correctAnswer": 3,
+    "explanation": "Júpiter es el planeta más grande del sistema solar, con un diámetro de aproximadamente 139,820 km."
+  },
+  {
+    "question": "¿Quién pintó la Mona Lisa?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Miguel Ángel"],
+    "correctAnswer": 2,
+    "explanation": "La Mona Lisa fue pintada por Leonardo da Vinci, un polímata del Renacimiento italiano."
+  },
+  {
+    "question": "¿Cuál es el elemento químico más abundante en el universo?",
+    "options": ["Oxígeno", "Carbono", "Helio", "Hidrógeno"],
+    "correctAnswer": 3,
+    "explanation": "El hidrógeno es el elemento químico más abundante en el universo, constituyendo aproximadamente el 75% de su masa."
+  }
+]

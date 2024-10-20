@@ -1,4 +1,8 @@
 package com.example.myapplication.models
 
-class QuizQuestion {
-}
+data class QuizQuestion(
+    val question: String,
+    val options: List<String>,
+    val correctAnswer: Int,
+    val explanation: String
+)
